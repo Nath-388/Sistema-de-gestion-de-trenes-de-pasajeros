@@ -20,8 +20,32 @@ public class ListaEnlazada<T> {
     }
 
     public void agregar(T elemento){
+        Nodo nuevo= new Nodo(elemento);
+        if(cabeza == null){
+            cabeza = nuevo;
+        }
+        else{
+            Nodo temp = cabeza;
+            while(temp.siguiente != null){
+                temp = temp.siguiente;
+            }
+            temp.siguiente = nuevo;
+        }
     }
     public void Eliminar(T elemento){
+        Nodo nuevo= new Nodo(elemento);
+        if(cabeza == null){
+            System.out.println("No hay elementos en la lista");
+        }
+        else{
+            Nodo temp = cabeza;
+            while(temp != null){
+                if(temp.dato.equals(elemento)){
+                    temp=temp.siguiente;
+                    System.out.println("El elemento " + elemento + " se eliminado en la lista");
+                }
+            }
+        }
 
     }
 }
