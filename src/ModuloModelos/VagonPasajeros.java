@@ -1,17 +1,18 @@
 package ModuloModelos;
 
 public class VagonPasajeros extends Vagon{
-    private Pasajeros[] pasajeros;
+    private Pasajero[] pasajeros;
 
-    public VagonPasajeros(Pasajeros[] pasajeros) {
+    public VagonPasajeros(String id, double cargaMax, Pasajero[] pasajeros) {
+        super(id, cargaMax);
         this.pasajeros = pasajeros;
     }
 
-    public Pasajeros[] getPasajeros() {
+    public Pasajero[] getPasajeros() {
         return pasajeros;
     }
 
-    public void setPasajeros(Pasajeros[] pasajeros) {
+    public void setPasajeros(Pasajero[] pasajeros) {
         this.pasajeros = pasajeros;
     }
 }

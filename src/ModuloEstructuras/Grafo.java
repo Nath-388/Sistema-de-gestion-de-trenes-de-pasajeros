@@ -1,7 +1,8 @@
 package ModuloEstructuras;
 
-public class Grafo {
-    private TablaHash<T, ListaEnlazada<Arista>> adyacencias = new TablaHash<>();
+public class Grafo<T> {
+
+    private TablaHash<T, Vertice<T>> vertices = new TablaHash<>();
 
     public void agregarVertice(T dato) {
         if (!vertices.contieneClave(dato)) {
@@ -13,35 +14,46 @@ public class Grafo {
         agregarVertice(origen);
         agregarVertice(destino);
 
-        Vertice<T> vOrigen = vertices.obtener(origen);
-        Vertice<T> vDestino = vertices.obtener(destino);
+        Vertice<T> Vorigen= vertices.obtener(origen);
+        Vertice<T> Vdestino = vertices.obtener(destino);
 
-        vOrigen.adyacentes.agregarAlFinal(new Arista<>(vDestino, peso));
-        vDestino.adyacentes.agregarAlFinal(new Arista<>(vOrigen, peso)); // no dirigido
+        Vorigen.adyacentes.agregarAlFinal(new Arista<>(Vdestino, peso));
+        Vdestino.adyacentes.agregarAlFinal(new Arista<>(Vorigen, peso));
+
     }
 
-    public ListaEnlazada<T> obtenerVecinos(T vertice) {
-        ListaEnlazada<Arista> lista = adyacencias.obtener(vertice);
+    public ListaEnlazada<T> obtenerVecinos(T dato) {
         ListaEnlazada<T> vecinos = new ListaEnlazada<>();
-        if (lista != null) {
-            for (int i = 0; i < lista.tamaño(); i++) {
-                vecinos.agregarAlFinal(lista.obtener(i).destino);
-            }
+        if (!vertices.contieneClave(dato)) return vecinos;
+
+        Vertice<T> v = vertices.obtener(dato);
+        NodoLista<Arista<T>> actual = v.adyacentes.getCabeza();
+
+        while (actual != null) {
+            vecinos.agregarAlFinal(actual.dato.destino.dato);
+            actual = actual.siguiente;
         }
+
         return vecinos;
     }
 
-    public void imprimir() {
-        ListaEnlazada<T> vertices = adyacencias.claves();
-        for (int i = 0; i < vertices.tamaño(); i++) {
-            T vertice = vertices.obtener(i);
-            System.out.print(vertice + " -> ");
-            ListaEnlazada<Arista> vecinos = adyacencias.obtener(vertice);
-            for (int j = 0; j < vecinos.tamaño(); j++) {
-                Arista arista = vecinos.obtener(j);
-                System.out.print("(" + arista.destino + ", " + arista.peso + ") ");
+    public void imprimirGrafo() {
+        ListaEnlazada<T> claves = vertices.claves();
+        NodoLista<T> nodo = claves.getCabeza();
+
+        while (nodo != null) {
+            T clave = nodo.dato;
+            Vertice<T> vertice = vertices.obtener(clave);
+            System.out.print(clave + " -> ");
+
+            NodoLista<Arista<T>> actual = vertice.adyacentes.getCabeza();
+            while (actual != null) {
+                System.out.print(actual.dato.destino.dato + "(" + actual.dato.peso + ") ");
+                actual = actual.siguiente;
             }
+
             System.out.println();
+            nodo = nodo.siguiente;
         }
     }
 }
