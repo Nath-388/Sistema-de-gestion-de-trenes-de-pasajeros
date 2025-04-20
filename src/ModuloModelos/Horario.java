@@ -1,11 +1,13 @@
 package ModuloModelos;
 
+import java.time.LocalDateTime;
+
 public class Horario {
     private String id;
-    private DateTime horaSalida;
-    private DateTime horallegada;
+    private LocalDateTime horaSalida;
+    private LocalDateTime horallegada;
 
-    public Horario(String id, DateTime horaSalida, DateTime horallegada) {
+    public Horario(String id, LocalDateTime horaSalida, LocalDateTime horallegada) {
         this.id = id;
         this.horaSalida = horaSalida;
         this.horallegada = horallegada;
@@ -19,19 +21,19 @@ public class Horario {
         this.id = id;
     }
 
-    public DateTime getHoraSalida() {
+    public LocalDateTime getHoraSalida() {
         return horaSalida;
     }
 
-    public void setHoraSalida(DateTime horaSalida) {
+    public void setHoraSalida(LocalDateTime horaSalida) {
         this.horaSalida = horaSalida;
     }
 
-    public DateTime getHorallegada() {
+    public LocalDateTime getHorallegada() {
         return horallegada;
     }
 
-    public void setHorallegada(DateTime horallegada) {
+    public void setHorallegada(LocalDateTime horallegada) {
         this.horallegada = horallegada;
     }
 }

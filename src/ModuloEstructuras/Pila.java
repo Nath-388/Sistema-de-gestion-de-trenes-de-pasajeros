@@ -15,7 +15,7 @@ public class Pila<T> {
         return dato;
     }
 
-    public T cima() {
+    public T peak() {
         return lista.obtener(0);
     }
 

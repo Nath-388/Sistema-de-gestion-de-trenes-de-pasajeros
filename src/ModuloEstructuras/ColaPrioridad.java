@@ -34,7 +34,7 @@ public class ColaPrioridad <T extends Comparable<T>> {
         return dato;
     }
 
-    public T frente() {
+    public T peak() {
         return elementos.obtener(0);
     }
 

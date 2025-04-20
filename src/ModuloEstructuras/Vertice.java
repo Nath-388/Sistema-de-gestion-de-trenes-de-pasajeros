@@ -1,6 +1,6 @@
 package ModuloEstructuras;
 
-public class Vertice {
+public class Vertice<T> {
     T dato;
     ListaEnlazada<Arista<T>> adyacentes;
     int distancia; // Para Dijkstra
@@ -13,7 +13,7 @@ public class Vertice {
         this.visitado = false;
     }
 
-    @Override
+
     public int compareTo(Vertice<T> otro) {
         return this.distancia - otro.distancia;
     }

@@ -14,7 +14,7 @@ public class Cola<T> {
         return dato;
     }
 
-    public T frente() {
+    public T peak() {
         return lista.obtener(0);
     }
 
