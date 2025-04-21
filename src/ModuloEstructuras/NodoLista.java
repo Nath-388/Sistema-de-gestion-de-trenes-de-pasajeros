@@ -7,4 +7,16 @@ public class NodoLista<T> {
     public NodoLista(T dato) {
         this.dato = dato;
     }
+     public T getDato() {
+        return dato;
+    }
+    public void setDato(T dato) {
+        this.dato = dato;
+    }
+    public NodoLista<T> getSiguiente() {
+        return siguiente;
+    }
+    public void setSiguiente(NodoLista<T> siguiente) {
+        this.siguiente = siguiente;
+    }
 }
