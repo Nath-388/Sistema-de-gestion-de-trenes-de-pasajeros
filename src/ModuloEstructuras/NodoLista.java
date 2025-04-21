@@ -1,10 +1,10 @@
 package ModuloEstructuras;
 
 public class NodoLista<T> {
-    T dato;
-    NodoLista<T> siguiente;
+    public T dato;
+    public NodoLista<T> siguiente;
 
-    NodoLista(T dato) {
+    public NodoLista(T dato) {
         this.dato = dato;
     }
 }
