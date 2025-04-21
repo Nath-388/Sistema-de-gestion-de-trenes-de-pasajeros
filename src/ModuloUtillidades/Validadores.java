@@ -1,5 +1,5 @@
 package ModuloUtillidades;
-
+import ModuloModelos.Ruta;
 public class Validadores {
     public static String validarCategoria(String categoria) {
         if (!categoria.equals("Premium") && !categoria.equals("Ejecutivo") && !categoria.equals("Estandar")) {
@@ -49,5 +49,12 @@ public class Validadores {
         return null;
     }
     
+    public static boolean validarRutaNoEnUso(Ruta ruta) {
+        if (ruta != null && ruta.estaEnUso()) {
+            System.out.println("La ruta se encuentra en uso y no puede ser modificada");
+            return false;
+        }
+        return true;
+    }
     
 }
