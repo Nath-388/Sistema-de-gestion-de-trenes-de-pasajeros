@@ -6,6 +6,7 @@ public class Ruta {
     private Tren tren;
     private Horario horario;
     private Estacion[] estaciones;
+    private boolean estaEnUso;
 
     public Ruta(String nombre, String id, Tren tren, Horario horario, Estacion[] estaciones) {
         this.nombre = nombre;
@@ -13,6 +14,15 @@ public class Ruta {
         this.tren = tren;
         this.horario = horario;
         this.estaciones = estaciones;
+        this.estaEnUso = false;
+    }
+
+    public boolean estaEnUso() {
+        return estaEnUso;  
+    }
+
+    public void setEnUso(boolean estaEnUso) {
+        this.estaEnUso = estaEnUso;  
     }
 
     public String getNombre() {
